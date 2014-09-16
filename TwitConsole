@@ -1,0 +1,66 @@
+*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package TwitConsole;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Date;
+import java.util.Scanner;
+
+/**
+ *
+ * @author User
+ */
+public class TwitConsole {
+ static Scanner lea = new Scanner(System.in);
+ static Funciones twit = new Funciones();
+    public static void main(String[] args) {
+        
+        
+        do{
+            System.out.println("1.-Log in");
+            System.out.println("2.-Crear Cuanta de TwitConsole");
+            System.out.println("Elija un opcion: ");
+            
+            int op = 0;
+            op = lea.nextInt();
+            switch(op){
+                case 1:  System.out.println("1.- Log in");
+            break;
+                case 2: System.out.println("2.- Crear cuanta de TwitConsole");
+                    break;
+            }
+        }while(true);
+            
+        
+    }
+    
+    public static void addUser()throws IOException{
+        System.out.println("Ingrese nombre: ");
+        String n = lea.next();
+        System.out.println("Ingrese genero");
+        char g = lea.next().charAt(0);
+        System.out.println("Ingrese username");
+        String u = lea.next();
+        
+        File f = new File("TwitConsole"+"/users.twc"+u);
+        if(f.exists()){
+            System.out.println("Este usuario ya existe");
+        }
+        else{
+        System.out.println("Ingrese Password");
+        String p = lea.next();
+        Date d = new Date();
+        System.out.println("Ingrese Edad");
+        int e = lea.nextInt();
+        
+        twit.addUser(n, g, u, p, d, e);
+        f.mkdir();
+        
+        }
+        }
+}
